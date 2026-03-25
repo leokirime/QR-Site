@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerador de QR Code Profissional</title>
+</head>
+<body>
+    <!-- Fundo decorativo -->
+    <div class="background-decoration"></div>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Header com título e descrição -->
+        <div class="header">
+            <h1>🔲 Gerador de QR Code</h1>
+            <p class="subtitle">Crie e customize seus QR Codes com facilidade</p>
+        </div>
+
+        <!-- Card de entrada -->
+        <div class="card input-card">
+            <h2>Dados do QR Code</h2>
+            
+            <!-- Input principal para URL/Texto -->
+            <div class="form-group">
+                <label for="qrInput">Texto ou URL:</label>
+                <input 
+                    type="text" 
+                    id="qrInput" 
+                    placeholder="Digite uma URL, email, telefone ou texto..." 
+                    class="input-field"
+                />
+                <span id="inputFeedback" class="feedback"></span>
+            </div>
+
+            <!-- Opções de tamanho -->
+            <div class="form-group">
+                <label for="qrSize">Tamanho do QR Code:</label>
+                <select id="qrSize" class="select-field">
+                    <option value="200">Pequeno (200x200px)</option>
+                    <option value="300" selected>Médio (300x300px)</option>
+                    <option value="400">Grande (400x400px)</option>
+                </select>
+            </div>
+
+            <!-- Opções de cores -->
+            <div class="form-group colors-group">
+                <div class="color-option">
+                    <label for="colorQR">Cor do QR:</label>
+                    <input type="color" id="colorQR" value="#000000" class="color-picker">
+                </div>
+                <div class="color-option">
+                    <label for="colorBg">Cor do Fundo:</label>
+                    <input type="color" id="colorBg" value="#ffffff" class="color-picker">
+                </div>
+            </div>
+
+            <!-- Botão Gerar -->
+            <button id="gerarBtn" class="btn btn-primary">
+                ✨ Gerar QR Code
+            </button>
+        </div>
+
+        <!-- Card de exibição do QR Code -->
+        <div class="card output-card" id="outputCard" style="display: none;">
+            <h2>Seu QR Code</h2>
+            
+            <!-- Área onde o QR Code será exibido -->
+            <div class="qr-display">
+                <div id="qrCodeBox"></div>
+            </div>
+
+            <!-- Mensagem de sucesso -->
+            <div class="success-message" id="successMessage">
+                ✅ QR Code gerado com sucesso!
+            </div>
+
+            <!-- Botões de download -->
+            <div class="button-group">
+                <button id="downloadPngBtn" class="btn btn-secondary">
+                    📥 Download PNG
+                </button>
+                <button id="downloadSvgBtn" class="btn btn-secondary">
+                    📥 Download SVG
+                </button>
+                <button id="copyBtn" class="btn btn-secondary">
+                    📋 Copiar Imagem
+                </button>
+            </div>
+
+            <!-- Botão para gerar novo -->
+            <button id="novoBtn" class="btn btn-outline">
+                🔄 Gerar Novo QR Code
+            </button>
+        </div>
+
+        <!-- Informações úteis -->
+        <div class="info-section">
+            <h3>💡 Dicas de Uso</h3>
+            <ul>
+                <li>Cole uma URL completa: https://www.exemplo.com</li>
+                <li>Email: mailto:seu@email.com</li>
+                <li>Telefone: tel:+55119999999</li>
+                <li>WiFi: WIFI:T:WPA;S:nome;P:senha;;</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bibliotecas externas -->
+    <!-- QRCode.js: https://davidshimjs.github.io/qrcodejs/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
+</html>
+

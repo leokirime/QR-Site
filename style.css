@@ -1,0 +1,813 @@
+/* ============================================
+   VARIÁVEIS E ESTILOS GLOBAIS
+   ============================================ */
+
+:root {
+    /* Cores primárias - Paleta moderna */
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #e0e7ff;
+    
+    /* Cores complementares */
+    --accent-color: #ec4899;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    
+    /* Cores neutras modernas */
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --card-bg-light: #334155;
+    --text-dark: #f1f5f9;
+    --text-light: #cbd5e1;
+    --border-color: #475569;
+    
+    /* Sombras modernas */
+    --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.5);
+    
+    /* Efeito Glass Morphism */
+    --glass-bg: rgba(30, 41, 59, 0.8);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    
+    /* Espaçamento */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    /* Tipografia */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    --font-size-base: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #2d1b4e 100%);
+    background-attachment: fixed;
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: var(--spacing-md);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   BACKGROUND DECORATIVO SOFISTICADO
+   ============================================ */
+
+.background-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(40px);
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/* ============================================
+   CONTAINER E LAYOUT PRINCIPAL
+   ============================================ */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Header com título */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-lg);
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+}
+
+/* ============================================
+   CARDS - GLASS MORPHISM DESIGN
+   ============================================ */
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-dark);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, var(--primary-color), var(--accent-color)) 1;
+    padding-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.input-card {
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+.input-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(99, 102, 241, 0.5);
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.output-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Formulário - Inputs e Labels */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+/* Input de texto */
+.input-field {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(51, 65, 85, 0.5);
+    color: var(--text-dark);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), var(--shadow-md);
+    background: rgba(51, 65, 85, 0.8);
+    transform: translateY(-2px);
+}
+
+.input-field::placeholder {
+    color: var(--text-light);
+    opacity: 0.6;
+}
+
+/* Select de tamanho */
+.select-field {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    background: rgba(51, 65, 85, 0.5);
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.select-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), var(--shadow-md);
+    background: rgba(51, 65, 85, 0.8);
+    transform: translateY(-2px);
+}
+
+.select-field:hover {
+    border-color: var(--primary-color);
+    background: rgba(51, 65, 85, 0.7);
+}
+
+/* Feedback de input */
+.feedback {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+}
+
+.feedback.error {
+    color: var(--danger-color);
+}
+
+.feedback.success {
+    color: var(--success-color);
+}
+
+/* ============================================
+   CORES - SELETORES DE COR
+   ============================================ */
+
+.colors-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.color-option {
+    display: flex;
+    flex-direction: column;
+}
+
+.color-option label {
+    margin-bottom: var(--spacing-sm);
+}
+
+.color-picker {
+    height: 50px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(51, 65, 85, 0.5);
+    box-shadow: var(--shadow-sm);
+}
+
+.color-picker:hover,
+.color-picker:focus {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md), 0 0 0 3px rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   BOTÕES - DESIGN MODERNO COM EFEITOS
+   ============================================ */
+
+.btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-family);
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Botão primário (Gerar QR Code) */
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    font-size: 1.05rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Botões secundários (Download, Copiar) */
+.btn-secondary {
+    flex: 1;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md), 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.btn-secondary:active {
+    transform: translateY(-1px);
+}
+
+/* Botão outline (Gerar Novo) */
+.btn-outline {
+    width: 100%;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-top: var(--spacing-md);
+}
+
+.btn-outline:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Grupo de botões */
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* ============================================
+   EXIBIÇÃO DO QR CODE
+   ============================================ */
+
+.qr-display {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: rgba(51, 65, 85, 0.3);
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#qrCodeBox {
+    display: inline-block;
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Canvas do QR Code */
+#qrCodeBox canvas {
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+#qrCodeBox canvas:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.4));
+}
+
+#qrCodeBox svg {
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+#qrCodeBox svg:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.4));
+}
+
+/* ============================================
+   MENSAGENS DE FEEDBACK
+   ============================================ */
+
+.success-message {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(34, 197, 94, 0.2) 100%);
+    border: 2px solid var(--success-color);
+    color: var(--success-color);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+    animation: slideDown 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.feedback {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.feedback.error {
+    color: var(--danger-color);
+    animation: shake 0.4s ease;
+}
+
+.feedback.success {
+    color: var(--success-color);
+    animation: slideDown 0.4s ease;
+}
+
+/* ============================================
+   SEÇÃO DE INFORMAÇÕES
+   ============================================ */
+
+.info-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-dark);
+    animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+}
+
+.info-section h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, var(--primary-color), var(--accent-color)) 1;
+    padding-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-section li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--text-light);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+}
+
+.info-section li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.info-section li:hover {
+    color: var(--primary-color);
+    padding-left: calc(var(--spacing-lg) + var(--spacing-sm));
+    transform: translateX(4px);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .container {
+        max-width: 100%;
+        padding: var(--spacing-md);
+    }
+
+    .header {
+        padding: var(--spacing-lg);
+        border-radius: 16px;
+    }
+
+    .header h1 {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: 20px;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+    }
+
+    .colors-group {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .qr-display {
+        min-height: 250px;
+        padding: var(--spacing-md);
+    }
+
+    .info-section {
+        padding: var(--spacing-md);
+        border-radius: 16px;
+    }
+
+    .info-section h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .header {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        padding: var(--spacing-md);
+        border-radius: 16px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .card h2 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .input-field,
+    .select-field {
+        padding: var(--spacing-sm);
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .color-picker {
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .qr-display {
+        min-height: 220px;
+        padding: var(--spacing-sm);
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+
+    .info-section {
+        padding: var(--spacing-md);
+        border-radius: 16px;
+    }
+
+    .info-section h3 {
+        font-size: 1rem;
+    }
+
+    .info-section li {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) 0;
+    }
+}
+
+/* ============================================
+   ANIMAÇÕES MODERNAS
+   ============================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   ACESSIBILIDADE E EFEITOS AVANÇADOS
+   ============================================ */
+
+/* Focus visível para navegação por teclado */
+.btn:focus-visible,
+.input-field:focus-visible,
+.select-field:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Reduz animações para usuários que preferem menos movimento */
+@media (prefers-reduced-motion: prefer-reduced) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark mode nativo - para navegadores que suportam */
+@supports (color: color(display-p3 0 0 0)) {
+    body {
+        color-scheme: dark;
+    }
+}
+
+/* Suporte para modo de foco aumentado */
+@media (prefers-contrast: more) {
+    .card {
+        border-width: 2px;
+    }
+
+    .btn {
+        border-width: 2px;
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar customizada (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
